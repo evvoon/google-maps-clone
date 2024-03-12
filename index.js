@@ -1,4 +1,25 @@
 /// <reference types="vite/client" />
+import { pwaAssetsHead } from "virtual:pwa-assets/head";
+import { pwaInfo } from "virtual:pwa-info";
+import { registerSW } from "virtual:pwa-register";
+
+if (pwaInfo && import.meta.env.PROD) {
+  registerSW({
+    immediate: true,
+    onRegistered(r) {
+      // uncomment following code if you want check for updates
+      // r && setInterval(() => {
+      //    console.log('Checking for sw update')
+      //    r.update()
+      // }, 20000 /* 20s for testing purposes */)
+      console.log(`SW Registered: ${r}`);
+    },
+    onRegisterError(error) {
+      console.log("SW registration error", error);
+    },
+  });
+}
+
 mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_TOKEN;
 
 navigator.geolocation.getCurrentPosition(successLocation, errorLocation, {
