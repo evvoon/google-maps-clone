@@ -1,5 +1,5 @@
-mapboxgl.accessToken =
-  "pk.eyJ1IjoibGxhbWExMjA0IiwiYSI6ImNsdG56emJzdTBjaGkya3JxNWdvM2I2NmEifQ._8v-AHBUq2vJoHIBOQ6WsA";
+/// <reference types="vite/client" />
+mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_TOKEN;
 
 navigator.geolocation.getCurrentPosition(successLocation, errorLocation, {
   enableHighAccuracy: true,
